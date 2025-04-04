@@ -5,7 +5,6 @@ namespace RepositoryPatternEF.Interfaces {
         void CadastrarCliente(Cliente cliente);
         void RemoverClientePorId(int id);
         void Atualizar(Cliente cliente);
-
         void ListarClientes();
     }
 }

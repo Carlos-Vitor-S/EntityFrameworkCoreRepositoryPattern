@@ -12,8 +12,8 @@ namespace RepositoryPatternEF {
                 var dbContext = scope.Resolve<ApplicationContext>();
                 var clienteService = scope.Resolve<IClienteService>();
 
-              //CRUD
-              clienteService.CadastrarCliente(new Cliente {
+                //CRUD
+                clienteService.CadastrarCliente(new Cliente {
                     Nome = "Maria oliveira",
                     CEP = "49680000",
                     Cidade = "Nossa Senhora da Glória",
@@ -31,12 +31,9 @@ namespace RepositoryPatternEF {
                     Estado = "SE",
                     Telefone = "12345678900"
                 });
-             
+
                 clienteService.ListarClientes();
-
             }
-
         }
-
     }
 }

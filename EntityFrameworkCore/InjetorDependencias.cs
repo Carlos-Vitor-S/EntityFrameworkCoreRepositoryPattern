@@ -24,9 +24,6 @@ namespace RepositoryPatternEF {
             var container = builder.Build();
             return container;
         }
-
-
-
     }
 
 }
