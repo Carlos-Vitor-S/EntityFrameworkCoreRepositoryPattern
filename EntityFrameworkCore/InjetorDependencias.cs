@@ -20,6 +20,7 @@ namespace RepositoryPatternEF {
                 optionsBuilder.UseNpgsql(connectionString);
                 return new ApplicationContext(optionsBuilder.Options);
             }).InstancePerLifetimeScope();
+            builder.RegisterType<ProdutoService>().As<IProdutoService>().InstancePerLifetimeScope();
 
             var container = builder.Build();
             return container;

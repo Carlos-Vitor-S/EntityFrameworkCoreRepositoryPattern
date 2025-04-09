@@ -5,6 +5,6 @@
         void Atualizar(T elemento);
         List<T> GetAllElements();
         T GetPorId(int id);
-        void SalvarAlteracoes(); 
+        void SalvarAlteracoes();
     }
 }
