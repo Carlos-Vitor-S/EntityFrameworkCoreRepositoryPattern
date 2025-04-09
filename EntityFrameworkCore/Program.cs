@@ -13,26 +13,27 @@ namespace RepositoryPatternEF {
                 var clienteService = scope.Resolve<IClienteService>();
 
                 //CRUD
-                clienteService.CadastrarCliente(new Cliente {
-                    Nome = "Maria oliveira",
+                clienteService.Cadastrar(new Cliente {
+                    Nome = "Joel jo oliveira",
                     CEP = "49680000",
                     Cidade = "Nossa Senhora da Glória",
                     Estado = "SE",
                     Telefone = "12345678900"
                 });
 
-                clienteService.RemoverClientePorId(id: 1);
+                clienteService.RemoverPorId(id: 73);
 
-                clienteService.Atualizar(new Cliente {
-                    Id = 4,
-                    Nome = "Maria oliveira",
-                    CEP = "49680000",
-                    Cidade = "Nossa Senhora da Glória",
-                    Estado = "SE",
-                    Telefone = "12345678900"
+                clienteService.Atualizar(cliente: new Cliente {
+                    Id = 7,
+                    Nome = "Flavia Silva Santos Oliveira",
+                    CEP = "89680000",
+                    Cidade = "Cidade Y",
+                    Estado = "AL",
+                    Telefone = "92345678900"
                 });
 
-                clienteService.ListarClientes();
+                clienteService.Listar();
+
             }
         }
     }
