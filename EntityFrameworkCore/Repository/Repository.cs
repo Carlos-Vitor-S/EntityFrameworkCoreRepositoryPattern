@@ -12,28 +12,26 @@ namespace RepositoryPatternEF.Repository {
 
         public void Cadastrar(T elemento) {
             _dbContext.Set<T>().Add(elemento);
-            _dbContext.SaveChanges();
         }
 
-        public void RemoverPorId(int id) {
-            var elementoPorId = _dbContext.Set<T>().Find(id);
-            if (elementoPorId != null) {
-                _dbContext.Remove(elementoPorId);
-                _dbContext.SaveChanges();
-            }
+        public void Remover(T elemento) {
+            _dbContext.Set<T>().Remove(elemento);
         }
 
         public void Atualizar(T elemento) {
             _dbContext.Set<T>().Update(elemento);
-            _dbContext.SaveChanges();
         }
 
-        public List<T> GetAll() {
+        public List<T> GetAllElements() {
             return _dbContext.Set<T>().ToList();
         }
 
+        public void SalvarAlteracoes() {
+            _dbContext.SaveChanges();
+        }
 
-
-
+        public T GetPorId(int id) {
+            return _dbContext.Set<T>().Find(id);
+        }
     }
 }

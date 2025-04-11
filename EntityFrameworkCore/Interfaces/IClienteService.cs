@@ -2,9 +2,12 @@
 
 namespace RepositoryPatternEF.Interfaces {
     interface IClienteService {
-        void CadastrarCliente(Cliente cliente);
-        void RemoverClientePorId(int id);
+        void Cadastrar(Cliente cliente);
+        void Remover(Cliente cliente);
+        void RemoverPorId(int id);
         void Atualizar(Cliente cliente);
-        void ListarClientes();
+        void Listar();
+        Cliente GetPorId(int id);
+        void SalvarAlteracoes();
     }
 }

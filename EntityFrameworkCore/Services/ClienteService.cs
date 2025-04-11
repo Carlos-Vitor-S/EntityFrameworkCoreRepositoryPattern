@@ -10,18 +10,31 @@ namespace RepositoryPatternEF.Services {
             _repositorioCliente = repositorioCliente;
         }
 
+        public void Cadastrar(Cliente cliente) {
+            _repositorioCliente.Cadastrar(cliente);
+            SalvarAlteracoes();
+        }
+
         public void Atualizar(Cliente cliente) {
             _repositorioCliente.Atualizar(cliente);
+            SalvarAlteracoes();
         }
 
-        public void CadastrarCliente(Cliente cliente) {
-
-            _repositorioCliente.Cadastrar(cliente);
-
+        public void Remover(Cliente cliente) {
+            _repositorioCliente.Remover(cliente);
+            SalvarAlteracoes();
         }
 
-        public void ListarClientes() {
-            var todosClientes = _repositorioCliente.GetAll().OrderBy(c => c.Id);
+        public void RemoverPorId(int id) {
+            var clienteExistente = GetPorId(id);
+            if (clienteExistente != null) {
+                _repositorioCliente.Remover(GetPorId(id));
+                SalvarAlteracoes();
+            }
+        }
+
+        public void Listar() {
+            var todosClientes = _repositorioCliente.GetAllElements().OrderBy(c => c.Id);
             foreach (var cliente in todosClientes) {
                 Console.Write($"ID: {cliente.Id} / Nome: {cliente.Nome} / Telefone: {cliente.Telefone}\n");
                 Console.Write($"CEP: {cliente.CEP} / Estado: {cliente.Estado} / Cidade: {cliente.Cidade}\n");
@@ -29,9 +42,12 @@ namespace RepositoryPatternEF.Services {
             }
         }
 
-        public void RemoverClientePorId(int id) {
-            _repositorioCliente.RemoverPorId(id);
+        public void SalvarAlteracoes() {
+            _repositorioCliente.SalvarAlteracoes();
+        }
 
+        public Cliente GetPorId(int id) {
+            return _repositorioCliente.GetPorId(id);
         }
     }
 }
